@@ -1,0 +1,21 @@
+
+
+CREATE OR ALTER PROC AdventureWord_Backups
+AS
+BEGIN 
+
+
+DECLARE @NameBackups NVARCHAR(100) ='AWDV_JLagosm' + CONVERT(NVARCHAR(40), GETDATE(), 103) + '_Full'
+
+ALTER DATABASE AdventureWorks2019
+SET RECOVERY FULL
+
+BACKUP DATABASE AdventureWorks2019
+TO AWDV_JLagosm
+WITH INIT, FORMAT, 
+NAME = @NameBackups,
+DESCRIPTION  = 'AdventureWork2019_Backup'
+END
+
+EXEC AdventureWord_Backups
+GO
