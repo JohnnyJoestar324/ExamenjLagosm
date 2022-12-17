@@ -1,0 +1,12 @@
+use master
+go
+
+EXEC sp_addumpdevice 'Disk', 'AWDV_JLagosm',
+'C:\Program Files\Microsoft SQL Server\MSSQL15.SQLSERVER2019\MSSQL\Backup\AWDV_JLagosm';
+GO
+
+SELECT * FROM sys.backup_devices
+GO
+
+EXEC sp_dropdevice 'AWDV_JLagosm', 'delfile' ;  
+GO  
